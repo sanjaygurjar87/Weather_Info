@@ -1,0 +1,9 @@
+C:\Users\SANJAY\Source\Repos\WeatherInfo\WeatherInfoData\bin\Release\netcoreapp3.1\WeatherInfoData.deps.json
+C:\Users\SANJAY\Source\Repos\WeatherInfo\WeatherInfoData\bin\Release\netcoreapp3.1\WeatherInfoData.dll
+C:\Users\SANJAY\Source\Repos\WeatherInfo\WeatherInfoData\bin\Release\netcoreapp3.1\WeatherInfoData.pdb
+C:\Users\SANJAY\Source\Repos\WeatherInfo\WeatherInfoData\obj\Release\netcoreapp3.1\WeatherInfoData.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SANJAY\Source\Repos\WeatherInfo\WeatherInfoData\obj\Release\netcoreapp3.1\WeatherInfoData.AssemblyInfoInputs.cache
+C:\Users\SANJAY\Source\Repos\WeatherInfo\WeatherInfoData\obj\Release\netcoreapp3.1\WeatherInfoData.AssemblyInfo.cs
+C:\Users\SANJAY\Source\Repos\WeatherInfo\WeatherInfoData\obj\Release\netcoreapp3.1\WeatherInfoData.csproj.CoreCompileInputs.cache
+C:\Users\SANJAY\Source\Repos\WeatherInfo\WeatherInfoData\obj\Release\netcoreapp3.1\WeatherInfoData.dll
+C:\Users\SANJAY\Source\Repos\WeatherInfo\WeatherInfoData\obj\Release\netcoreapp3.1\WeatherInfoData.pdb
