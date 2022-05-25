@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-
 using LiteDB;
-
 using WeatherInfoData.Interfaces;
 using WeatherInfoData.Models;
 
@@ -37,8 +35,8 @@ namespace WeatherInfoData.Services
 
         public async Task<CityWeatherInfo> GetWeatherInfoById(int cityId)
         {
-            CityWeatherInfo cityWeatherInfo = new CityWeatherInfo();
-            City city = GetRequestedCityFromLiteDb(cityId);
+            var cityWeatherInfo = new CityWeatherInfo();
+            var city = GetRequestedCityFromLiteDb(cityId);
 
             if (!city.Description.Equals(DETAILS_NOT_FOUND))
             {
@@ -66,10 +64,10 @@ namespace WeatherInfoData.Services
 
         public async Task<List<CityWeatherInfo>> GetWeatherInfoForAllCities()
         {
-            List<CityWeatherInfo> cityWeatherInfos = new List<CityWeatherInfo>();
-            List<City> cities = GetAllCitiesFromLiteDB();
+            var cityWeatherInfos = new List<CityWeatherInfo>();
+            var cities = GetAllCitiesFromLiteDB();
             JsonWeatherResult result = null;
-            string requestIds = "";
+            var requestIds = string.Empty;
 
             for(int i = 0; i < cities.Count; i++)
             {
@@ -86,13 +84,13 @@ namespace WeatherInfoData.Services
 
             if (result != null)
             {
-                foreach (City city in cities)
+                foreach (var city in cities)
                 { 
-                    CityWeatherData currentCityWeatherData = result.list.Where(n => n.id == city.Id).FirstOrDefault();
+                    var currentCityWeatherData = result.list.Where(n => n.id == city.Id).FirstOrDefault();
 
                     if (currentCityWeatherData != null)
                     { 
-                        CityWeatherInfo cityWeatherInfo = new CityWeatherInfo();
+                        var cityWeatherInfo = new CityWeatherInfo();
 
                         cityWeatherInfo.Id = city.Id;
                         cityWeatherInfo.Name = city.Name;
@@ -112,7 +110,7 @@ namespace WeatherInfoData.Services
 
         private City GetRequestedCityFromLiteDb(int cityId)
         { 
-            City requestedCity = new City();
+            var requestedCity = new City();
 
             using (var db = new LiteDatabase(dbPath))
             {
@@ -138,17 +136,17 @@ namespace WeatherInfoData.Services
 
         private async Task<JsonWeatherResult> GetWeatherInfo(string cityIds)
         {
-            JsonWeatherResult weatherData = await _weatherApiCallerService.GetWeatherInfo(cityIds);
+            var weatherData = await _weatherApiCallerService.GetWeatherInfo(cityIds);
             return weatherData;
         }
 
         private void SeedData(LiteDatabase db, string dbPath)
         {
             var dbCities = db.GetCollection<City>("Cities");
-            List<City> cities = new List<City>();
+            var cities = new List<City>();
 
             //City 1
-            City city1 = new City()
+            var city1 = new City()
             {
                 Id = 2673722,
                 Name = "Stockholm",
@@ -162,7 +160,7 @@ namespace WeatherInfoData.Services
             cities.Add(city1);
 
             //City 2
-            City city2 = new City()
+            var city2 = new City()
             {
                 Id = 5695743,
                 Name = "Gothenburg",
@@ -177,7 +175,7 @@ namespace WeatherInfoData.Services
             cities.Add(city2);
 
             //City 3
-            City city3 = new City()
+            var city3 = new City()
             {
                 Id = 5128581,
                 Name = "New York",
@@ -187,7 +185,7 @@ namespace WeatherInfoData.Services
             cities.Add(city3);
 
             //City 4
-            City city4 = new City()
+            var city4 = new City()
             {
                 Id = 5368361,
                 Name = "Los Angeles",
@@ -197,7 +195,7 @@ namespace WeatherInfoData.Services
             cities.Add(city4);
 
             //City 5
-            City city5 = new City()
+            var city5 = new City()
             {
                 Id = 1261481,
                 Name = "New Delhi",

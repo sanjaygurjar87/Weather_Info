@@ -18,8 +18,8 @@ namespace WeatherInfoDataTests
         public async Task GetWeatherInfoByIdShouldGetWeatherDataForGivenCityId()
         {
             IWeatherApiCallerService weatherApiCallerService = Substitute.For<IWeatherApiCallerService>();
-            WeatherDataService weatherDataService = new WeatherDataService(weatherApiCallerService);
-            CityWeatherInfo expectedCityWeatherInfo = new CityWeatherInfo()
+            var weatherDataService = new WeatherDataService(weatherApiCallerService);
+            var expectedCityWeatherInfo = new CityWeatherInfo()
             { 
                 Id = 2673722,
                 Name = "Stockholm",
@@ -34,7 +34,7 @@ namespace WeatherInfoDataTests
                 Temperature = 15
             };
 
-            CityWeatherData[] mockCityWeatherData = new CityWeatherData[] 
+            var mockCityWeatherData = new CityWeatherData[] 
             { 
                 new CityWeatherData() 
                 { 
@@ -70,11 +70,11 @@ namespace WeatherInfoDataTests
         [TestMethod]
         public async Task GetWeatherInfoByIdShouldNotReturnDataWhenCityIdIsMissingInLiteDB()
         {
-            IWeatherApiCallerService weatherApiCallerService = Substitute.For<IWeatherApiCallerService>();
-            WeatherDataService weatherDataService = new WeatherDataService(weatherApiCallerService);
+            var weatherApiCallerService = Substitute.For<IWeatherApiCallerService>();
+            var weatherDataService = new WeatherDataService(weatherApiCallerService);
             const string detailsNotFound = "Details not available";
 
-            CityWeatherInfo expectedCityWeatherInfo = new CityWeatherInfo()
+            var expectedCityWeatherInfo = new CityWeatherInfo()
             {
                 Id = 1,
                 Description = detailsNotFound
@@ -89,10 +89,10 @@ namespace WeatherInfoDataTests
         [TestMethod]
         public async Task GetWeatherInfoForAllCitiesShouldReturnWeatherInfoForAllCitiesInLiteDB()
         {
-            IWeatherApiCallerService weatherApiCallerService = Substitute.For<IWeatherApiCallerService>();
-            WeatherDataService weatherDataService = new WeatherDataService(weatherApiCallerService);
-            List<CityWeatherInfo> expectedWeatherInfos = TestWeatherInfos();
-            CityWeatherData[] mockCityWeatherData = MockWeatherData();
+            var weatherApiCallerService = Substitute.For<IWeatherApiCallerService>();
+            var weatherDataService = new WeatherDataService(weatherApiCallerService);
+            var expectedWeatherInfos = TestWeatherInfos();
+            var mockCityWeatherData = MockWeatherData();
 
             weatherApiCallerService.GetWeatherInfo(Arg.Any<string>()).Returns(new JsonWeatherResult()
             {
@@ -117,9 +117,9 @@ namespace WeatherInfoDataTests
 
         private List<CityWeatherInfo> TestWeatherInfos()
         {
-            List<CityWeatherInfo> cityWeatherInfos = new List<CityWeatherInfo>();
+            var cityWeatherInfos = new List<CityWeatherInfo>();
 
-            CityWeatherInfo stockholm = new CityWeatherInfo()
+            var stockholm = new CityWeatherInfo()
             {
                 Id = 2673722,
                 Name = "Stockholm",
@@ -134,7 +134,7 @@ namespace WeatherInfoDataTests
                 Temperature = 15
             };
 
-            CityWeatherInfo gothenburg = new CityWeatherInfo()
+            var gothenburg = new CityWeatherInfo()
             {
                 Id = 5695743,
                 Name = "Gothenburg",
@@ -149,7 +149,7 @@ namespace WeatherInfoDataTests
                 Temperature = 18
             };
 
-            CityWeatherInfo newYork = new CityWeatherInfo()
+            var newYork = new CityWeatherInfo()
             {
                 Id = 5128581,
                 Name = "New York",
@@ -160,7 +160,7 @@ namespace WeatherInfoDataTests
                 Temperature = 14
             };
 
-            CityWeatherInfo losAngeles = new CityWeatherInfo()
+            var losAngeles = new CityWeatherInfo()
             {
                 Id = 5368361,
                 Name = "Los Angeles",
@@ -171,7 +171,7 @@ namespace WeatherInfoDataTests
                 Temperature = 14
             };
 
-            CityWeatherInfo newDelhi = new CityWeatherInfo()
+            var newDelhi = new CityWeatherInfo()
             {
                 Id = 1261481,
                 Name = "New Delhi",
@@ -193,7 +193,7 @@ namespace WeatherInfoDataTests
 
         private CityWeatherData[] MockWeatherData()
         {
-            CityWeatherData[] mockCityWeatherData = new CityWeatherData[]
+            var mockCityWeatherData = new CityWeatherData[]
             {
                 new CityWeatherData()
                 {

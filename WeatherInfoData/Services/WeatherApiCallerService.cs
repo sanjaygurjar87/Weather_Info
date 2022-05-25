@@ -21,7 +21,7 @@ namespace WeatherInfoData.Services
 
             var result = await client.DownloadStringTaskAsync(new Uri(apiUrl));
 
-            JsonWeatherResult weatherData = JsonConvert.DeserializeObject<JsonWeatherResult>(result);
+            var weatherData = JsonConvert.DeserializeObject<JsonWeatherResult>(result);
 
             return weatherData;
         }

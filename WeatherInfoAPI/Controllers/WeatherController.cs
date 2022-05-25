@@ -27,7 +27,7 @@ namespace WeatherInfoAPI.Controllers
                 return BadRequest();
 
             int id;
-            CityWeatherInfo cityWeatherInfo = new CityWeatherInfo();
+            var cityWeatherInfo = new CityWeatherInfo();
 
             if (Int32.TryParse(cityId, out id))
                 cityWeatherInfo = await _weatherDataService.GetWeatherInfoById(id);
@@ -40,7 +40,7 @@ namespace WeatherInfoAPI.Controllers
         [HttpGet("api/weather")]
         public async Task<IActionResult> GetWeatherInfoForAllCities()
         {
-            List<CityWeatherInfo> citiesWeatherInfo = await _weatherDataService.GetWeatherInfoForAllCities();
+            var citiesWeatherInfo = await _weatherDataService.GetWeatherInfoForAllCities();
 
             return new JsonResult(citiesWeatherInfo);
         }
